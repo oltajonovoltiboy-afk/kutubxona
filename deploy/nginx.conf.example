@@ -1,0 +1,24 @@
+# Replace kutubxona.example.uz with the real domain and configure TLS certificates.
+server {
+    listen 80;
+    server_name kutubxona.example.uz www.kutubxona.example.uz;
+    client_max_body_size 30m;
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 90s;
+    }
+    location /static/ {
+        alias /srv/urganch-kutubxona/staticfiles/;
+        expires 7d;
+        add_header Cache-Control "public, max-age=604800";
+    }
+    # Keep uploaded book PDFs behind Django's authenticated view; do not alias /media/books/ publicly.
+    location /media/covers/ {
+        alias /srv/urganch-kutubxona/media/covers/;
+        expires 1d;
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Urganch akademik litseyi — Raqamli kutubxona",
+  "short_name": "Raqamli kutubxona",
+  "description": "Abu Rayhon Beruniy nomidagi Urganch davlat akademik litseyi elektron kutubxonasi",
+  "lang": "uz-Latn",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f7f2",
+  "theme_color": "#123b2c",
+  "icons": []
+}
